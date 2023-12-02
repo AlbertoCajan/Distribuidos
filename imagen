@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHub</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .banner {
+      height: 1cm;
+      background-color: #ffcc00; /* Color del banner */
+      color: #000000; /* Color del texto en el banner */
+      text-align: center;
+      line-height: 0cm;
+      overflow: hidden; /* Oculta el texto que desborda */
+      white-space: nowrap; /* Evita el salto de línea */
+    }
+
+    .banner p {
+      white-space: nowrap;
+      overflow: hidden;
+      position: absolute;
+      animation: marquee 20s linear infinite;
+    }
+
+    header {
+      background-color: #333;
+      color: #ffffff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.5; /* Ajusta la opacidad según sea necesario */
+      
+    }
+    .background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  /* Ajusta el tamaño de la imagen para cubrir el contenedor */
+      filter: grayscale(100%) brightness(70%) sepia(40%) hue-rotate(274deg); /* Aplica un tinte morado */
+    }
+
+    .left-section {
+      max-width: 60%;
+      text-align: center;
+      z-index: 1; /* Coloca el contenido encima de la imagen de fondo */
+      color: #ffffff;
+    }
+
+    .left-section h1 {
+        color: #000000;
+        font-size: 40px; /* Ajusta el tamaño de la fuente según sea necesario */
+    }
+
+    .left-section p {
+        color: #000000;
+        font-size: 30px; /* Ajusta el tamaño de la fuente según sea necesario */
+    }
+
+    .profesor-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5cm;
+    }
+
+    .profesor-info {
+        text-align: center;
+        background-color: #ffffff; /* Fondo blanco */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 20px; /* Espaciado interno */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        margin-right: 1cm; /* Margen a la derecha para separar los contenedores */
+    }
+
+
+    .separar-clase-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ffcc0094;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #ffffff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <p>Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende! Inscríbete ahora y aprende!</p>
+  </div>
+  
+  <header>
+    <div class="logo">StudyHub</div>
+    <nav>
+      <ul>
+        <li><a href="#">Docente</a></li>
+        <li><a href="#">Estudiante</a></li>
+        <li><a href="#">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+    const bannerText = document.querySelector('.banner p');
+    let animationFrame;
+  
+    function animateMarquee() {
+      const animationWidth = bannerText.clientWidth;
+      let currentPosition = window.innerWidth;
+  
+      function step() {
+        currentPosition -= 1;
+        bannerText.style.transform = `translateX(${currentPosition}px)`;
+  
+        if (currentPosition < -animationWidth) {
+          currentPosition = window.innerWidth;
+        }
+  
+        animationFrame = requestAnimationFrame(step);
+      }
+  
+      step();
+    }
+  
+    // Iniciar la animación cuando la ventana se cargue
+    window.addEventListener('load', animateMarquee);
+  
+    // Detener la animación cuando la ventana pierda el foco para mejorar el rendimiento
+    window.addEventListener('blur', () => cancelAnimationFrame(animationFrame));
+  
+    // Reanudar la animación cuando la ventana vuelve a estar en foco
+    window.addEventListener('focus', animateMarquee);
+  </script>
+  
+  <section class="main-content">
+    <div class="background">
+      <img src="portrait-of-a-smiling-beautiful-teenage-girl-with-dental-braces-young-schoolgirl-with-school-bag-and-tablet-device-photo.jpg" alt="Fondo degradado" />
+    </div>
+    <div class="left-section">
+      <h1>La mejor academia de Chiclayo</h1>
+      <p>Separa una clase, elige tu horario y el profesor que desees</p>
+      <a href="#" class="separar-clase-btn">Separar Clase</a>
+      <div class="profesor-container">
+        <div class="profesor-info">
+          <h2>¿Por qué elegirnos?</h2>
+          <p>Dado a nuestro personal</p>
+        </div>
+        <div class="profesor-info">
+          <h2>Profesor 2</h2>
+          <p>Información del profesor 2...</p>
+        </div>
+        <div class="profesor-info">
+          <h2>Profesor 3</h2>
+          <p>Información del profesor 3...</p>
+        </div>
+      </div>
+    </div>
+    <!-- Puedes agregar aquí el contenido adicional de tu body -->
+  </section>
+
+  <footer>
+    Derechos de autor © 2023 StudyHub. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
